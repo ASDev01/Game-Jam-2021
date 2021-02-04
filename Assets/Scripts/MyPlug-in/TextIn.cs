@@ -5,17 +5,24 @@ using UnityEngine.UI;
 
 public class TextIn : MonoBehaviour
 {
-    public float inTime = 0f;
+    [Range(0.1f, 20.0f)]
+    public float inSpeed = 0f;
 
-    
+    public Color StartColor = new Color(255, 255, 255, 0);
 
     void Start()
     {
-        
+        GetComponent<Text>().color = StartColor;
+        InvokeRepeating(nameof(InAnim), 0f, 0.05f);
     }
 
     void InAnim()
     {
-
+        StartColor = new Color(255, 255, 255, StartColor.a += Time.deltaTime * inSpeed);
+        if (StartColor.a >= 255)
+        {
+            CancelInvoke(nameof(InAnim));
+        }
+        GetComponent<Text>().color = StartColor;
     }
 }

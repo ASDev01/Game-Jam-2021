@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\MenuController.cs" />
      <Compile Include="Assets\Scripts\MyPlug-in\MyBtn.cs" />
      <Compile Include="Assets\Scripts\MyPlug-in\TextIn.cs" />
+     <Compile Include="Assets\Scripts\QuizSistem.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>J:/Escritorio 2/Unity/Game Jam/GameJam1/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
