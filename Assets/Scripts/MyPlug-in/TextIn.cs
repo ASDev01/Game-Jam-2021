@@ -10,9 +10,9 @@ public class TextIn : MonoBehaviour
 
     public Color StartColor = new Color(255, 255, 255, 0);
 
-    void Start()
+    private void OnEnable()
     {
-        GetComponent<Text>().color = StartColor;
+        StartColor = new Color(255, 255, 255, 0);
         InvokeRepeating(nameof(InAnim), 0f, 0.05f);
     }
 
@@ -25,4 +25,17 @@ public class TextIn : MonoBehaviour
         }
         GetComponent<Text>().color = StartColor;
     }
+
+    //public void OutAnim()
+    //{
+    //    Debug.Log(11111);
+    //    StartColor = new Color(255, 255, 255, StartColor.a -= Time.deltaTime * inSpeed);
+    //    if (StartColor.a <= 0)
+    //    {
+    //        CancelInvoke(nameof(OutAnim));
+    //        transform.parent.gameObject.SetActive(false);
+    //    }
+    //    GetComponent<Text>().color = StartColor;
+    //    Invoke(nameof(OutAnim), 0.05f);
+    //}
 }

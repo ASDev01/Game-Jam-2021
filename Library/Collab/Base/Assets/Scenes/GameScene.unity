@@ -705,21 +705,21 @@ MonoBehaviour:
     r3: rojo
     r4: amarillo
     rCorrecto: 0
-    ID: 0
+    ID: -1
   - pregunta: Que te gusat comer
     r1: manzana
     r2: Banana
     r3: Brocoli
     r4: Pezcado
     rCorrecto: 0
-    ID: 0
+    ID: -2
   - pregunta: Como estas
     r1: bien
     r2: muy bien
     r3: perfecto
     r4: super bien
     rCorrecto: 0
-    ID: 0
+    ID: -3
   pregunta: {fileID: 1226835042}
   b1: {fileID: 210765238}
   b2: {fileID: 741423150}
@@ -2045,7 +2045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc366ee4bf391264aa73fb95233e0373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inSpeed: 4
+  inSpeed: 6
   StartColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &1823187003
 GameObject:

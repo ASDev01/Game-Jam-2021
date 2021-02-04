@@ -211,10 +211,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1823187004}
   - {fileID: 1303692698}
   - {fileID: 165168840}
   - {fileID: 582095960}
+  - {fileID: 1823187004}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -254,7 +254,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 6035797}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -727,6 +727,7 @@ MonoBehaviour:
   b4: {fileID: 1394443822}
   transitionAnim: {fileID: 165168843}
   labelPanel: {fileID: 582095959}
+  btnPanel: {fileID: 1843408235}
 --- !u!4 &347654460
 Transform:
   m_ObjectHideFlags: 0
@@ -980,7 +981,7 @@ RectTransform:
   m_Children:
   - {fileID: 1714739209}
   m_Father: {fileID: 6035797}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1619,7 +1620,7 @@ RectTransform:
   - {fileID: 1226835041}
   - {fileID: 1843408236}
   m_Father: {fileID: 6035797}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2045,7 +2046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc366ee4bf391264aa73fb95233e0373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inSpeed: 4
+  inSpeed: 6
   StartColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &1823187003
 GameObject:
@@ -2082,7 +2083,7 @@ RectTransform:
   - {fileID: 1850818513}
   - {fileID: 1090437943}
   m_Father: {fileID: 6035797}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2194,8 +2195,9 @@ GameObject:
   - component: {fileID: 1843408239}
   - component: {fileID: 1843408238}
   - component: {fileID: 1843408237}
+  - component: {fileID: 1843408240}
   m_Layer: 5
-  m_Name: PanelResp
+  m_Name: BtnPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2286,6 +2288,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843408235}
   m_CullTransparentMesh: 0
+--- !u!225 &1843408240
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843408235}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1850818512
 GameObject:
   m_ObjectHideFlags: 0

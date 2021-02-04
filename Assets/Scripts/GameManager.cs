@@ -14,15 +14,27 @@ public class GameManager : MonoBehaviour
     public Text b1, b2, b3, b4;
     public Animator transitionAnim;
     public GameObject labelPanel;
+    public GameObject btnPanel;
 
     private int randomNum = 0;
-    bool checkEnd = false;
-
+    private bool checkEnd = false;
     private QuizSistem[][] preguntasA = new QuizSistem[3][];
     private List<int> preguntasR = new List<int>();
     private int[] resM = new int[3];
     private int fase = 0;
-    private int gameLoop = 0; 
+    private int gameLoop = 0;
+    private int[,] ComprobacionM = new int[3, 4]
+    {
+        { 2, 1, -1, -2 },
+        { 2, 1, -1, -2 },
+        { 2, 1, -1, -2 }
+    };
+    private int[,] ComprobacionM2 = new int[3, 4]
+    {
+        { 2, 1, -1, -2 },
+        { 2, 1, -1, -2 },
+        { 2, 1, -1, -2 }
+    };
     private int numQuiz = 0;
 
     private void Start()
@@ -38,8 +50,8 @@ public class GameManager : MonoBehaviour
                 preguntasA[i][k].ID = j;
             }
         }
-
-        GameLoop();
+        transitionAnim.SetTrigger("TransitionIn");
+        Invoke(nameof(GameLoop), 15f);
     }
 
     private void GameLoop()
@@ -60,8 +72,8 @@ public class GameManager : MonoBehaviour
                 Invoke(nameof(GameLoop), 5f);
                 break;
             case 3:
-                CreateQuizM();
                 labelPanel.SetActive(false);
+                CreateQuizM();
                 transitionAnim.SetTrigger("TransitionOut");
                 break;
             case 4:
@@ -80,30 +92,33 @@ public class GameManager : MonoBehaviour
                 labelPanel.SetActive(false);
                 transitionAnim.SetTrigger("TransitionOut");
                 break;
-        }
-       
+            case 10:
+                FinalCheck();
+                break;
+        }       
     }
 
     private void Update()
     {
-        Debug.Log("gameLoop = " + gameLoop);
+        //Debug.Log("gameLoop = " + gameLoop);
         if (Input.GetMouseButtonDown(0))
         {
             if (checkEnd)
             {
                 checkEnd = false;
-                CreateQuiz();
+                Invoke(nameof(CreateQuiz), 1f);
             }
         }
     }
 
     public void CreateQuiz()
     {
+        btnPanel.GetComponent<CanvasGroup>().interactable = true;
         do
         {
             randomNum = Random.Range(0, 3);
 
-            Debug.Log("fase: " + fase + "\nrandomNum: " + randomNum);
+            //Debug.Log("fase: " + fase + "\nrandomNum: " + randomNum);
         }
         while (preguntasR != null && preguntasR.Contains(preguntasA[fase][randomNum].ID));
 
@@ -116,6 +131,7 @@ public class GameManager : MonoBehaviour
     }
     public void CreateQuizM()
     {
+        btnPanel.GetComponent<CanvasGroup>().interactable = true;
         pregunta.text = preguntasM[fase].pregunta;
         b1.text = preguntasM[fase].r1;
         b2.text = preguntasM[fase].r2;
@@ -124,6 +140,7 @@ public class GameManager : MonoBehaviour
     }
     public void CheckQuiz(int r)
     {
+        btnPanel.GetComponent<CanvasGroup>().interactable = false;
         checkEnd = true;
         if (numQuiz < 2)
         {
@@ -144,14 +161,18 @@ public class GameManager : MonoBehaviour
         }
         else // Check QuizM
         {
-            resM[fase] = r;
+            resM[fase] = ComprobacionM[fase,r-1];
             fase++;
             gameLoop++;
             numQuiz = 0;
             checkEnd = false;
+            if (fase == 3)
+            {
+                gameLoop = 10;
+            }
+
             Invoke(nameof(GameLoop), 1f);
-        }
-        
+        }       
         //Debug.Log("numQuiz = " + numQuiz);
     }
 
@@ -163,5 +184,51 @@ public class GameManager : MonoBehaviour
     public void MenuBtn()
     {
         SceneManager.LoadScene("StartScene");
+    }
+
+    /// <summary>
+    /// Chekear para saber a que final llegaremos
+    /// </summary>
+    private void FinalCheck()
+    {
+        List<int> contB = new List<int>();
+        List<int> contM = new List<int>();
+        for (int i = 0; i < 3; i++)
+        {
+            if (resM[i] > 0)
+            {
+                contB.Add(resM[i]);
+            }
+            else
+            {
+                contM.Add(resM[i]);
+            }
+        }
+
+        if (SumNum(contB) == 6)
+        {
+            Debug.Log("FB");
+        }
+        else if (contB.Count >= 2)
+        {
+            Debug.Log("FBN");
+        }
+        else if (SumNum(contM) == -6)
+        {
+            Debug.Log("FM");
+        }
+        else if (contB.Count >= 2)
+        {
+            Debug.Log("FMN");
+        }
+    }
+    private int SumNum(List<int> l)
+    {
+        int sum = 0;
+        foreach (var item in l)
+        {
+            sum += item;
+        }
+        return sum;
     }
 }
