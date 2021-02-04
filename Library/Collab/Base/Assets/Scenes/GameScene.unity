@@ -211,10 +211,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 582095960}
   - {fileID: 1823187004}
   - {fileID: 1303692698}
   - {fileID: 165168840}
+  - {fileID: 582095960}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -254,7 +254,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 6035797}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -632,48 +632,92 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9d59818dc342d14b81b7e8d7d90f5f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  preguntasA:
-  - pregunta: 1+1
+  preguntasA1:
+  - pregunta: 'P1: 1+1'
     r1: 2
     r2: 3
     r3: 4
     r4: 5
     rCorrecto: 1
     ID: 0
-  - pregunta: 2+2
-    r1: 3
-    r2: 4
-    r3: 5
-    r4: 6
-    rCorrecto: 2
+  - pregunta: 'P2: 5+5'
+    r1: 10
+    r2: 2
+    r3: 3
+    r4: 4
+    rCorrecto: 1
     ID: 0
-  - pregunta: 1+2
-    r1: 3
-    r2: 4
-    r3: 5
-    r4: 6
+  - pregunta: 'P3: 2+2'
+    r1: 4
+    r2: 2
+    r3: 23
+    r4: 3
+    rCorrecto: 1
+    ID: 0
+  preguntasA2:
+  - pregunta: 'PP1: 1+1'
+    r1: 2
+    r2: 213
+    r3: 4123
+    r4: 23
+    rCorrecto: 1
+    ID: 0
+  - pregunta: 'PP2: 2+2'
+    r1: 4
+    r2: 123
+    r3: 123
+    r4: 4
+    rCorrecto: 1
+    ID: 0
+  - pregunta: 'PP3: 5+5'
+    r1: 10
+    r2: 123
+    r3: 213
+    r4: 3
+    rCorrecto: 1
+    ID: 0
+  preguntasA3:
+  - pregunta: 'PPP1: 1+1'
+    r1: 2
+    r2: 1321
+    r3: 421412
+    r4: 1
+    rCorrecto: 1
+    ID: 0
+  - pregunta: 'PPP2: 2+2'
+    r1: 4
+    r2: 123213
+    r3: 3123
+    r4: 3
+    rCorrecto: 1
+    ID: 0
+  - pregunta: 'PPP3: 5+5'
+    r1: 10
+    r2: wsafdesaf
+    r3: wqsdasd
+    r4: dsad
     rCorrecto: 1
     ID: 0
   preguntasM:
-  - pregunta: 
-    r1: 
-    r2: 
-    r3: 
-    r4: 
+  - pregunta: Que color te gusta
+    r1: blanco
+    r2: negro
+    r3: rojo
+    r4: amarillo
     rCorrecto: 0
     ID: 0
-  - pregunta: 
-    r1: 
-    r2: 
-    r3: 
-    r4: 
+  - pregunta: Que te gusat comer
+    r1: manzana
+    r2: Banana
+    r3: Brocoli
+    r4: Pezcado
     rCorrecto: 0
     ID: 0
-  - pregunta: 
-    r1: 
-    r2: 
-    r3: 
-    r4: 
+  - pregunta: Como estas
+    r1: bien
+    r2: muy bien
+    r3: perfecto
+    r4: super bien
     rCorrecto: 0
     ID: 0
   pregunta: {fileID: 1226835042}
@@ -681,6 +725,8 @@ MonoBehaviour:
   b2: {fileID: 741423150}
   b3: {fileID: 499636880}
   b4: {fileID: 1394443822}
+  transitionAnim: {fileID: 165168843}
+  labelPanel: {fileID: 582095959}
 --- !u!4 &347654460
 Transform:
   m_ObjectHideFlags: 0
@@ -915,7 +961,7 @@ GameObject:
   - component: {fileID: 582095962}
   - component: {fileID: 582095961}
   m_Layer: 5
-  m_Name: StartPanel
+  m_Name: LabelPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -934,7 +980,7 @@ RectTransform:
   m_Children:
   - {fileID: 1714739209}
   m_Father: {fileID: 6035797}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1573,7 +1619,7 @@ RectTransform:
   - {fileID: 1226835041}
   - {fileID: 1843408236}
   m_Father: {fileID: 6035797}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1921,7 +1967,7 @@ GameObject:
   - component: {fileID: 1714739212}
   - component: {fileID: 1714739210}
   m_Layer: 5
-  m_Name: StartText
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2036,7 +2082,7 @@ RectTransform:
   - {fileID: 1850818513}
   - {fileID: 1090437943}
   m_Father: {fileID: 6035797}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

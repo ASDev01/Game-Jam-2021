@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public QuizSistem[] preguntasA1, preguntasA2, preguntasA3;
+    [Space]
     public QuizSistem[] preguntasM = new QuizSistem[3];
+    [Space]
     public Text pregunta;
     public Text b1, b2, b3, b4;
     public Animator transitionAnim;
@@ -17,7 +19,7 @@ public class GameManager : MonoBehaviour
     bool checkEnd = false;
 
     private QuizSistem[][] preguntasA = new QuizSistem[3][];
-    private QuizSistem[] preguntasR;
+    private List<int> preguntasR = new List<int>();
     private int[] resM = new int[3];
     private int fase = 0;
     private int gameLoop = 0; 
@@ -28,6 +30,15 @@ public class GameManager : MonoBehaviour
         preguntasA[0] = preguntasA1;
         preguntasA[1] = preguntasA2;
         preguntasA[2] = preguntasA3;
+
+        for (int i = 0, j = 0; i < preguntasA.Length; i++)  
+        {
+            for (int k = 0; k < preguntasA[i].Length; k++, j++) 
+            {
+                preguntasA[i][k].ID = j;
+            }
+        }
+
         GameLoop();
     }
 
@@ -88,12 +99,20 @@ public class GameManager : MonoBehaviour
 
     public void CreateQuiz()
     {
-        randomNum = Random.Range(0, 3);
+        do
+        {
+            randomNum = Random.Range(0, 3);
+
+            Debug.Log("fase: " + fase + "\nrandomNum: " + randomNum);
+        }
+        while (preguntasR != null && preguntasR.Contains(preguntasA[fase][randomNum].ID));
+
         pregunta.text = preguntasA[fase][randomNum].pregunta;
         b1.text = preguntasA[fase][randomNum].r1;
         b2.text = preguntasA[fase][randomNum].r2;
         b3.text = preguntasA[fase][randomNum].r3;
         b4.text = preguntasA[fase][randomNum].r4;
+        preguntasR.Add(preguntasA[fase][randomNum].ID);
     }
     public void CreateQuizM()
     {
