@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public Animator sceneTransAnim;
     public GameObject labelPanel;
     public GameObject btnPanel;
-
+    public GameObject endMenuPanel;
     public Text point;
 
     private int randomNum = 0;
@@ -26,9 +26,9 @@ public class GameManager : MonoBehaviour
     private int gameLoop = 0;
     private int[,] ComprobacionM = new int[3, 4]
     {
-        { 2, 1, -1, -2 },
-        { 2, 1, -1, -2 },
-        { 2, 1, -1, -2 }
+        { 1, -1, 2, -2 },
+        { 2, -2, -1, 1 },
+        { -2, 2, -1, -1 }
     };
     private int[,] ComprobacionM2 = new int[3, 4]
     {
@@ -126,6 +126,7 @@ public class GameManager : MonoBehaviour
                 break;
             case 6:
                 Debug.Log("fase 6");
+                
                 gameLoop = 0;
                 GameLoop();
                 labelPanel.SetActive(false);
@@ -183,6 +184,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("FMN");
         }
+        Invoke(nameof(EndPanelActivate), 2.5f);
     }
     private int SumNum(List<int> l)
     {
@@ -297,5 +299,10 @@ public class GameManager : MonoBehaviour
     public void MenuBtn()
     {
         SceneManager.LoadScene("StartScene");
+    }
+
+    private void EndPanelActivate()
+    {
+        endMenuPanel.SetActive(true);
     }
 }

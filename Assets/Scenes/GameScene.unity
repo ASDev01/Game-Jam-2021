@@ -241,7 +241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &74274661
 RectTransform:
   m_ObjectHideFlags: 0
@@ -669,7 +669,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Volver a empezar
 --- !u!222 &239108748
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -708,25 +708,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preguntasM:
-  - pregunta: Que color te gusta
-    r1: blanco
-    r2: negro
-    r3: rojo
-    r4: amarillo
+  - pregunta: "Al salir de su examen, un chico repetidor le interrumpe. \u201CEh
+      t\xFA, te he copiado todo el ex\xE1men. Como est\xE9 mal lo vas a pagar\u201D.
+      Mar\xEDa decidi\xF3:"
+    r1: Chivarse a la profesora
+    r2: Ignorarlo y dejar que le copie
+    r3: "Ayudarle a que copie tus ex\xE1menes"
+    r4: "Plantarle cara y pegarle un pu\xF1etazo"
     rCorrecto: 0
     ID: -1
-  - pregunta: Que te gusat comer
-    r1: manzana
-    r2: Banana
-    r3: Brocoli
-    r4: Pezcado
+  - pregunta: "Cuando volvi\xF3 de su \xFAltimo ex\xE1men, Mar\xEDa encontr\xF3 a
+      sus padres discutiendo de forma agresiva. Decidi\xF3:"
+    r1: "Entrar en la discusi\xF3n e intentar calmarlos"
+    r2: Discutir con ellos a gritos
+    r3: Dejarlo estar e irse a la cama
+    r4: "Esperar a que se calmen y hablar con ellos por separado m\xE1s tarde"
     rCorrecto: 0
     ID: -2
-  - pregunta: Como estas
-    r1: bien
-    r2: muy bien
-    r3: perfecto
-    r4: super bien
+  - pregunta: "Al volver de la presentaci\xF3n de su trabajo, Mar\xEDa encontr\xF3
+      a su pareja sentado en el sof\xE1 de su apartamento compartido. Se sent\xF3
+      junto a \xE9l, sin mediar palabra. Sab\xEDa que su relaci\xF3n se estaba enfriando,
+      pero no sab\xEDa qu\xE9 hacer para solucionarlo. Decidi\xF3: "
+    r1: "Decirle que deben dejar la relaci\xF3n sin previo aviso"
+    r2: "Intentar hablar con \xE9l sobre la situaci\xF3n y ver su punto de vista"
+    r3: "Ignorarlo. Si quiere algo que venga \xE9l a hablar conmigo"
+    r4: Intentar animarlo con planes y citas.
     rCorrecto: 0
     ID: -3
   pregunta: {fileID: 1226835042}
@@ -738,6 +744,7 @@ MonoBehaviour:
   sceneTransAnim: {fileID: 1213359037}
   labelPanel: {fileID: 582095959}
   btnPanel: {fileID: 1843408235}
+  endMenuPanel: {fileID: 1451084220}
   point: {fileID: 556017720}
 --- !u!4 &347654460
 Transform:
@@ -1057,7 +1064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &577205433
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1065,17 +1072,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 577205432}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1169936117}
-  m_Father: {fileID: 582095960}
-  m_RootOrder: 3
+  m_Father: {fileID: 1451084221}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 450, y: -53.32762}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &577205434
@@ -1200,8 +1207,7 @@ RectTransform:
   m_Children:
   - {fileID: 1714739209}
   - {fileID: 74274661}
-  - {fileID: 1598478351}
-  - {fileID: 577205433}
+  - {fileID: 1451084221}
   m_Father: {fileID: 6035797}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1524,7 +1530,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: "Volver al Men\xFA"
 --- !u!222 &1169936119
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1610,6 +1616,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SceneTransition
+      objectReference: {fileID: 0}
+    - target: {fileID: 7174984218898457008, guid: 4bae77b55ebce24489ecd32398b9b923,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7174984218898457011, guid: 4bae77b55ebce24489ecd32398b9b923,
         type: 3}
@@ -1756,11 +1767,11 @@ RectTransform:
   m_Father: {fileID: 1303692698}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 193}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -0.0000076293945, y: -43}
+  m_SizeDelta: {x: 375.39148, y: 134.73781}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1226835042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1790,7 +1801,7 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 0
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: New Text
@@ -2039,6 +2050,108 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1451084220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1451084221}
+  - component: {fileID: 1451084224}
+  - component: {fileID: 1451084223}
+  - component: {fileID: 1451084222}
+  m_Layer: 5
+  m_Name: Menu/RestartPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1451084221
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451084220}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1598478351}
+  - {fileID: 577205433}
+  m_Father: {fileID: 582095960}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 51.559998}
+  m_SizeDelta: {x: 600, y: 106.65524}
+  m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &1451084222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451084220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+--- !u!114 &1451084223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451084220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1451084224
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451084220}
+  m_CullTransparentMesh: 0
 --- !u!1 &1598478350
 GameObject:
   m_ObjectHideFlags: 0
@@ -2057,7 +2170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1598478351
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2065,17 +2178,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598478350}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 239108746}
-  m_Father: {fileID: 582095960}
-  m_RootOrder: 2
+  m_Father: {fileID: 1451084221}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -53.32762}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1598478352
