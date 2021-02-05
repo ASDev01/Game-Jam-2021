@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
         { 2, -2, -1, 1 },
         { -2, 2, -1, -1 }
     };
-    private int[,] ComprobacionM2 = new int[3, 4]
+    private int[,] ComprobacionM2 = new int[3, 4] //creo que esto se puede eliminar
     {
         { 2, 1, -1, -2 },
         { 2, 1, -1, -2 },
@@ -61,35 +62,35 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Flujo del jugeo
+    /// Flujo del juego
     /// </summary>
     private void GameLoop()
     {
         switch (gameLoop)
         {
-            case 0:
-                point.enabled = true;
+            case 0:        //Crea las preguntas y las muestra. La puntuación se pone a 0/0
+                point.enabled = true;   
                 point.text = "0 / 0";
                 CreateQuiz();
                 break;
-            case 1:
+            case 1:        //Animación de transición IN
                 labelTransAnim.SetTrigger("TransitionIn");
                 gameLoop++;
                 Invoke(nameof(GameLoop), 1.5f);        
                 break;
-            case 2:
+            case 2: //Texto de historia ANTES de la PREGUNTA MORAL
                 labelPanel.SetActive(true);
                 if(points[0] >= 4)
                 {
-                    Debug.Log("Has aprobado");
+                    Debug.Log("Has aprobado"); //Si ha aprobado, se va a la pregunta moral
                     gameLoop++;
                     Invoke(nameof(GameLoop), 5f);
                 }
                 else
                 {
                     Debug.Log("Has suspendido");
-                    resM[fase] = ComprobacionM[fase, 3];
-                    numQuiz = 0;
+                    resM[fase] = -2; //Si ha suspendido se salta la pregunta y se toma 
+                    numQuiz = 0;                           //la respuesta MALA
                     gameLoop = 5;
                     Invoke(nameof(GameLoop), 2f);
                 }
@@ -97,35 +98,36 @@ public class GameManager : MonoBehaviour
                 points[1] = 0;
                 
                 break;
-            case 3:
+            case 3:         //Se muestra la pregunta moral y transition OUT
                 labelPanel.SetActive(false);
                 CreateQuizM();
                 labelTransAnim.SetTrigger("TransitionOut");
                 break;
-            case 4:
+            case 4:        //Se ejecuta una vez ya se ha hecho el CheckQuizM
+                           //Transition IN 
                 labelTransAnim.SetTrigger("TransitionIn");
                 gameLoop++;
                 Invoke(nameof(GameLoop), 1.5f);
-                Debug.Log("fase 4");
+                Debug.Log("gameLoop 4");
                 break;
-            case 5:
-                // al pta fase donde ajuntan las opciones corectas e incorrectas
-                if (fase++ == 2)
+            case 5:        //Se comprueba la fase.
+                
+                if (fase++ == 2)        //Si es la última...
                 {
                     gameLoop = 10;
-                    //labelTransAnim.SetTrigger("TransitionIn");
+                    //labelTransAnim.SetTrigger("TransitionIn");    //Pasamos al gameLoop 10
                     Invoke(nameof(GameLoop), 1.5f);
                 }
-                else
-                {
-                    labelPanel.SetActive(true);
+                else              //Si no es la última...
+                {                
+                    labelPanel.SetActive(true);        //Activamos panel para la historia 
                     Debug.Log("Has ido al siguiente fase");
                     gameLoop++;
                     Invoke(nameof(GameLoop), 5f);
                 }               
                 break;
-            case 6:
-                Debug.Log("fase 6");
+            case 6:        //Se resetea el gameLoop, se desactiva el panel para la historia y Transition OUT
+                Debug.Log("gameLoop 6");
                 
                 gameLoop = 0;
                 GameLoop();
@@ -139,7 +141,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log("fase = " + fase);
+        //Debug.Log("fase = " + fase);
         if (Input.GetMouseButtonDown(0))
         {
             if (checkEnd)
@@ -150,7 +152,7 @@ public class GameManager : MonoBehaviour
         }
     }
     /// <summary>
-    /// Chekear para saber a que final llegaremos
+    /// Chekear para saber a que final llegaremos. Activa los botones del menú final al cabo de unos segundos
     /// </summary>
     private void FinalCheck()
     {
@@ -158,6 +160,7 @@ public class GameManager : MonoBehaviour
         List<int> contM = new List<int>();
         for (int i = 0; i < 3; i++)
         {
+            Debug.Log(resM[i]);
             if (resM[i] > 0)
             {
                 contB.Add(resM[i]);
@@ -167,7 +170,7 @@ public class GameManager : MonoBehaviour
                 contM.Add(resM[i]);
             }
         }
-
+        Debug.Log("Final Check: " + contB.Count + " " + SumNum(contB));
         if (SumNum(contB) == 6)
         {
             Debug.Log("FB");
@@ -186,6 +189,11 @@ public class GameManager : MonoBehaviour
         }
         Invoke(nameof(EndPanelActivate), 2.5f);
     }
+    /// <summary>
+    /// Suma las partes de una lista
+    /// </summary>
+    /// <param name="l">lista</param>
+    /// <returns></returns>
     private int SumNum(List<int> l)
     {
         int sum = 0;
@@ -195,6 +203,9 @@ public class GameManager : MonoBehaviour
         }
         return sum;
     }
+   /// <summary>
+   /// Lee las preguntas de un txt y las guarda en la memoria
+   /// </summary>
     private void InitQuestion()
     {
         QuizSistem temp;
@@ -223,7 +234,11 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public void CreateQuiz()
+   /// <summary>
+   /// Crea una pregunta aleatoria del array de preguntas. Asigna el texto de la pregunta a los
+   /// botones y el texto principal. Añade el ID de la pregunta puesta a la lista de preguntas respondidas.
+   /// </summary>
+   public void CreateQuiz()
     {
         btnPanel.GetComponent<CanvasGroup>().interactable = true;
         do
@@ -240,7 +255,10 @@ public class GameManager : MonoBehaviour
         b4.text = preguntasA[fase,randomNum].r4;
         preguntasR.Add(preguntasA[fase,randomNum].ID);
     }
-    public void CreateQuizM()
+    /// <summary>
+    /// Crea una pregunta moral del array de preguntas morales. La elige en función de la fase
+    /// </summary>
+   public void CreateQuizM()
     {
         btnPanel.GetComponent<CanvasGroup>().interactable = true;
         pregunta.text = preguntasM[fase].pregunta;
@@ -249,6 +267,11 @@ public class GameManager : MonoBehaviour
         b3.text = preguntasM[fase].r3;
         b4.text = preguntasM[fase].r4;
     }
+    /// <summary>
+    /// Comprueba el resultado de la pregunta a partir de la opcion escogida. Cuando se ha hecho 7 veces, llama
+    /// a GameLoop()
+    /// </summary>
+    /// <param name="r"></param>
     public void CheckQuiz(int r)
     {
         btnPanel.GetComponent<CanvasGroup>().interactable = false;
@@ -300,7 +323,9 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("StartScene");
     }
-
+/// <summary>
+/// Activa el panel para volver a empezar la partida o salir al menú principal
+/// </summary>
     private void EndPanelActivate()
     {
         endMenuPanel.SetActive(true);
