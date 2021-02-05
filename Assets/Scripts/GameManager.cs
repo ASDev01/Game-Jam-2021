@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject labelPanel;
     public GameObject btnPanel;
 
+    public Text point;
+
     private int randomNum = 0;
     private bool checkEnd = false;
     private QuizSistem[,] preguntasA = new QuizSistem[3, 20];
@@ -35,41 +37,49 @@ public class GameManager : MonoBehaviour
         { 2, 1, -1, -2 }
     };
     private int numQuiz = 0;
-    private int points = 0;
+    private int[] points = { 0, 0 };
 
-    private void Awake()
-    {
-        InitQuestion();   
-    }
     private void Start()
     {
+        InitQuestion();
         for (int i = 0, j = 0; i < preguntasA.GetLength(0); i++)  
         {
             for (int k = 0; k < preguntasA.GetLength(1); k++, j++) 
             {
-              
+                //Debug.Log(preguntasA[i, k] + ":i:" + i + "k:" + k);
                 preguntasA[i,k].ID = j;
             }
         }
-        sceneTransAnim.SetTrigger("TransitionIn");
         //labelPanel.SetActive(true);
-        Invoke(nameof(GameLoop), 2f); // Pendiente de modifcar
+        Invoke(nameof(GameLoop), 0.5f); // Pendiente de modifcar
+        Invoke(nameof(StartHis), 3f);
     }
+
+    private void StartHis()
+    {
+        sceneTransAnim.SetTrigger("TransitionIn");
+    }
+
+    /// <summary>
+    /// Flujo del jugeo
+    /// </summary>
     private void GameLoop()
     {
         switch (gameLoop)
         {
             case 0:
+                point.enabled = true;
+                point.text = "0 / 0";
                 CreateQuiz();
                 break;
             case 1:
-                labelTransAnim.SetTrigger("TransitionOut");
+                labelTransAnim.SetTrigger("TransitionIn");
                 gameLoop++;
                 Invoke(nameof(GameLoop), 1.5f);        
                 break;
             case 2:
                 labelPanel.SetActive(true);
-                if(points >= 4)
+                if(points[0] >= 4)
                 {
                     Debug.Log("Has aprobado");
                     gameLoop++;
@@ -78,9 +88,13 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     Debug.Log("Has suspendido");
+                    resM[fase] = ComprobacionM[fase, 3];
+                    numQuiz = 0;
                     gameLoop = 5;
-                    Invoke(nameof(gameLoop), 2f);
+                    Invoke(nameof(GameLoop), 2f);
                 }
+                points[0] = 0;
+                points[1] = 0;
                 
                 break;
             case 3:
@@ -92,14 +106,26 @@ public class GameManager : MonoBehaviour
                 labelTransAnim.SetTrigger("TransitionIn");
                 gameLoop++;
                 Invoke(nameof(GameLoop), 1.5f);
+                Debug.Log("fase 4");
                 break;
             case 5:
-                labelPanel.SetActive(true);
-                Debug.Log("Has ido al siguiente fase");
-                gameLoop++;
-                Invoke(nameof(GameLoop), 5f);
+                // al pta fase donde ajuntan las opciones corectas e incorrectas
+                if (fase++ == 2)
+                {
+                    gameLoop = 10;
+                    //labelTransAnim.SetTrigger("TransitionIn");
+                    Invoke(nameof(GameLoop), 1.5f);
+                }
+                else
+                {
+                    labelPanel.SetActive(true);
+                    Debug.Log("Has ido al siguiente fase");
+                    gameLoop++;
+                    Invoke(nameof(GameLoop), 5f);
+                }               
                 break;
             case 6:
+                Debug.Log("fase 6");
                 gameLoop = 0;
                 GameLoop();
                 labelPanel.SetActive(false);
@@ -112,89 +138,15 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        //Debug.Log("gameLoop = " + gameLoop);
+        Debug.Log("fase = " + fase);
         if (Input.GetMouseButtonDown(0))
         {
             if (checkEnd)
             {
-                Debug.Log(1111111111);
                 checkEnd = false;
                 Invoke(nameof(CreateQuiz), 1f);
             }
         }
-    }
-    public void CreateQuiz()
-    {
-        btnPanel.GetComponent<CanvasGroup>().interactable = true;
-        do
-        {
-            randomNum = Random.Range(0, 20);
-            //Debug.Log("fase: " + fase + "\nrandomNum: " + randomNum);
-        }
-        while (preguntasR != null && preguntasR.Contains(preguntasA[fase,randomNum].ID));
-
-        pregunta.text = preguntasA[fase,randomNum].pregunta;
-        b1.text = preguntasA[fase,randomNum].r1;
-        b2.text = preguntasA[fase,randomNum].r2;
-        b3.text = preguntasA[fase,randomNum].r3;
-        b4.text = preguntasA[fase,randomNum].r4;
-        preguntasR.Add(preguntasA[fase,randomNum].ID);
-    }
-    public void CreateQuizM()
-    {
-        btnPanel.GetComponent<CanvasGroup>().interactable = true;
-        pregunta.text = preguntasM[fase].pregunta;
-        b1.text = preguntasM[fase].r1;
-        b2.text = preguntasM[fase].r2;
-        b3.text = preguntasM[fase].r3;
-        b4.text = preguntasM[fase].r4;
-    }
-    public void CheckQuiz(int r)
-    {
-        btnPanel.GetComponent<CanvasGroup>().interactable = false;
-        checkEnd = true;
-        if (numQuiz < 2)
-        {
-            if (preguntasA[fase,randomNum].rCorrecto == r)
-            {
-                pregunta.text = "Correcto!!!";
-                points++;
-            }
-            else
-            {
-                pregunta.text = "Incorrecto!!!";
-                Debug.Log(checkEnd);
-            }
-            if (++numQuiz == 2)
-            {
-                gameLoop++;
-                checkEnd = false;
-                Invoke(nameof(GameLoop), 1f);
-            }
-        }
-        else // Check QuizM
-        {
-            resM[fase] = ComprobacionM[fase,r-1];
-            fase++;
-            gameLoop++;
-            numQuiz = 0;
-            checkEnd = false;
-            if (fase == 3)
-            {
-                gameLoop = 10;
-            }
-
-            Invoke(nameof(GameLoop), 1f);
-        }       
-        //Debug.Log("numQuiz = " + numQuiz);
-    }
-    public void RestartBtn()
-    {
-        SceneManager.LoadScene("GameScene");
-    }
-    public void MenuBtn()
-    {
-        SceneManager.LoadScene("StartScene");
     }
     /// <summary>
     /// Chekear para saber a que final llegaremos
@@ -243,19 +195,20 @@ public class GameManager : MonoBehaviour
     }
     private void InitQuestion()
     {
-        TextAsset txt = Resources.Load("PreguntasFase1") as TextAsset;
-        Debug.Log(txt);
+        QuizSistem temp;
+        TextAsset txt = new TextAsset();
+        string[] preguntasFase = new string[] { "Preguntas1", "PreguntasFase2", "Preguntas1" };
 
-        string[] str = txt.text.Split('\n');
-       // QuizSistem temp = new QuizSistem();
-
-        for (int k = 0; k < preguntasA.GetLength(0); k++) 
+        for (int k = 0; k < preguntasA.GetLength(0); k++)
         {
-            for (int i = 0, j = 0; i < str.Length - 1; i += 6, j++)
+            txt = Resources.Load(preguntasFase[k]) as TextAsset;
+            string[] str = txt.text.Split('\n');
+            for (int i = 0, j = 0; i < str.Length - 2; i += 6, j++)
             {
                 //Debug.Log("str[" + i + "]= " + str[i]);
-                QuizSistem temp = new QuizSistem();
+                temp = new QuizSistem();
                 temp.pregunta = str[i];
+                //Debug.Log(str[i + 1] + ":" + j);
                 temp.rCorrecto = int.Parse(str[i + 1]);
                 temp.r1 = str[i + 2];
                 temp.r2 = str[i + 3];
@@ -266,6 +219,83 @@ public class GameManager : MonoBehaviour
                 // FALTA DEDUCIR LA K!!!!!
                 preguntasA[k, j] = temp;
             }
+        }
+    }
+    public void CreateQuiz()
+    {
+        btnPanel.GetComponent<CanvasGroup>().interactable = true;
+        do
+        {
+            randomNum = Random.Range(0, 20);
+            //Debug.Log("fase: " + fase + "\nrandomNum: " + randomNum);
+        }
+        while (preguntasR != null && preguntasR.Contains(preguntasA[fase,randomNum].ID));
+        
+        pregunta.text = preguntasA[fase,randomNum].pregunta;
+        b1.text = preguntasA[fase,randomNum].r1;
+        b2.text = preguntasA[fase,randomNum].r2;
+        b3.text = preguntasA[fase,randomNum].r3;
+        b4.text = preguntasA[fase,randomNum].r4;
+        preguntasR.Add(preguntasA[fase,randomNum].ID);
+    }
+    public void CreateQuizM()
+    {
+        btnPanel.GetComponent<CanvasGroup>().interactable = true;
+        pregunta.text = preguntasM[fase].pregunta;
+        b1.text = preguntasM[fase].r1;
+        b2.text = preguntasM[fase].r2;
+        b3.text = preguntasM[fase].r3;
+        b4.text = preguntasM[fase].r4;
+    }
+    public void CheckQuiz(int r)
+    {
+        btnPanel.GetComponent<CanvasGroup>().interactable = false;
+        checkEnd = true;
+        if (numQuiz < 7)
+        {
+            if (preguntasA[fase,randomNum].rCorrecto == r)
+            {
+                pregunta.text = "Correcto!!!";
+                points[0]++;
+            }
+            else
+            {
+                pregunta.text = "Incorrecto!!!";
+                points[1]++;
+                //Debug.Log(checkEnd);
+            }
+            point.text = points[0].ToString() + " / " + points[1].ToString();
+            if (++numQuiz == 7)
+            {
+                point.enabled = false;
+                gameLoop++;
+                checkEnd = false;
+                Invoke(nameof(GameLoop), 1f);
+            }
+        }
+        else // Check QuizM
+        {
+            resM[fase] = ComprobacionM[fase,r-1];
+            gameLoop++;
+            checkEnd = false;
+            numQuiz = 0;
+            Invoke(nameof(GameLoop), 1f);
         }       
+        //Debug.Log("numQuiz = " + numQuiz);
+    }
+
+    /// <summary>
+    /// Para volver a empezar la partida
+    /// </summary>
+    public void RestartBtn()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
+    /// <summary>
+    /// Para volver al menu principal
+    /// </summary>
+    public void MenuBtn()
+    {
+        SceneManager.LoadScene("StartScene");
     }
 }
