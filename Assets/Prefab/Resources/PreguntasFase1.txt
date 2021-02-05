@@ -1,0 +1,120 @@
+¿Si mezclas rojo y azul qué color aparece?
+1
+Lila
+Amarillo
+Verde
+Naranja
+¿Cuántos ángulos tiene un dodecaedro?
+2
+Doce
+Diez
+Cuatro
+Catorce
+¿A qué grupo pertenece el Ornitorrinco?
+4
+Mamífero terrestre
+Anfibio
+Mamífero acuático
+Mamífero semi-acuático
+¿Cuántas patas debe tener un arácnido para considerarse como tal?
+2
+Seis
+Ocho
+Diez
+Cuatro
+¿Cuál de estos insectos NO es un arácnido?
+3
+Ácaro
+Araña
+Mantis Palo
+Escorpión
+¿Qué capa de la atmósfera está más lejos? 
+4
+Estratosfera
+Troposfera
+Termosfera
+Exosfera
+¿Cuántos bits hay en un byte? 
+4	
+Dos
+Cuatro
+Diez
+Ocho
+¿Cuánta gente hay en España? 
+1
+47 Millones
+524Mil
+59 Millones
+1 Billón
+¿Cuál es el ser vivo más grande del mundo? 
+2
+Una ballena
+Un bosque
+Un mar
+Un calamar gigante
+¿Cuál es la época más antigua? 
+1
+Paleolítico
+Neolítico
+Edad de los metales
+Época clásica
+¿Qué afirmación es falsa? 
+1
+Ningún mamífero pone huevos
+Ningún mamífero es invertebrado.
+Los mamíferos viven en todo tipo de hábitats
+Todos los mamíferos tienen cerebro
+¿Cuántos países hay en la península ibérica? 
+4
+Dos
+Tres
+Uno
+Cuatro
+¿Qué país no tiene costa?
+2
+España
+Alemania
+Marruecos
+Honduras
+¿Dónde NO viven los pingüinos?
+3
+Argentina
+Nueva Zelanda
+Japón
+Sur de Australia
+¿De dónde sale la miel? 
+1	
+Abejas
+Avispas
+Flores
+Árboles
+¿En qué año empezó la Primera Guerra Mundial? 1914
+4
+1912
+1942
+1898
+1914
+¿Cuál no es un músico? 
+4
+Amadeus Mozart
+Frédéric Chopin
+Johann Sebastian Bach
+Isaac Newton
+¿Qué instrumento NO existía en el siglo XVI? 
+4
+Órgano
+Violín
+Laúd
+Guitarra eléctrica
+¿Quién compuso Las Cuatro Estaciones?
+2
+Mozart
+Vivaldi
+Debussy
+Chopin
+¿Qué clave musical NO existe? 
+2
+Clave de Sol
+Clave de Re
+Clave de Fa
+Clave de Do

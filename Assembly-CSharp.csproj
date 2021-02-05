@@ -58,12 +58,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AudioController.cs" />
      <Compile Include="Assets\Scripts\CreditController.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\MenuController.cs" />
      <Compile Include="Assets\Scripts\MyPlug-in\MyBtn.cs" />
      <Compile Include="Assets\Scripts\MyPlug-in\TextIn.cs" />
      <Compile Include="Assets\Scripts\QuizSistem.cs" />
+     <None Include="Assets\Prefab\Resources\PreguntasFase1.txt" />
+     <None Include="Assets\Resources\PreguntasFase3.txt" />
+     <None Include="Assets\Resources\Historia.txt" />
      <None Include="Assets\Resources\Preguntas1.txt" />
      <None Include="Assets\Resources\PreguntasFase2.txt" />
  <Reference Include="Unity.Timeline.Editor">

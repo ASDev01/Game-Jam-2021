@@ -1,121 +1,123 @@
-¿Cuál es la constante gravitacional? 
+Cual es la constante gravitacional? 
 4
 9’81m/s
 11m/s^2
 20m/s^2
 9’81m/s^2
-¿Quién escribió la Odisea? 
+Quien escribio la Odisea? 
 1
 Homero
 Pericles
 Virgilio
-Julio César
-¿Cuánto es la cuarta parte de la tercera parte?
+Julio Cesar
+Cuanto es la cuarta parte de la tercera parte? 1
 4
 1/14
 1/7
 1/4
 1/12
-¿Cuál es el resultado de esta operación?:2+2x4 
+Cual es el resultado de esta operacion?: 2 + 2 x 4 
 2
 16
 10
 8
 12
-¿En qué siglo empezó la revolución francesa? 
+En que siglo empezo la revolucion francesa? 
 3
 XX
 XVI
 XVIII
 XIV
-¿Quién creó la Ley de la Gravitación Universal? 
+Quien creo la Ley de la Gravitacion Universal? 
 1
 Isaac Newton
 Galileo Galilei
 Albert Einstein
-Nicolás Copérnico
-¿Qué río no está en España? 
+Nicolas Copernico
+Que rio no esta en Espana? 
 4
 Tajo
-Miño
+Mino
 Duero
 La Garona
-¿Cuánto mide aproximadamente la circunferencia de la tierra? 
+Cuanto mide aproximadamente la circunferencia de la tierra? 
 3
 100.000 Km
 60.000 Km
 40.000 Km
 10.000 Km
-¿Cuánto tarda en llegar la luz del Sol a la Tierra? 
+Cuanto tarda en llegar la luz del Sol a la Tierra? 
 1
 Ocho minutos
 Veinte minutos
 Una hora
 Diez segundos
-¿Cuál es el primer elemento de la tabla periódica? 
+Cual es el primer elemento de la tabla periodica? 
 2
-Oxígeno
-Hidrógeno
+Oxigeno
+Hidrogeno
 Carbono
 Litio
-¿Dónde se encuentran pinturas rupestres? 
+Donde se encuentran pinturas rupestres? 
 3
 Valladolid
 Barcelona
 Altamira
 Madrid
-¿Cuál fué el último emperador del imperio romano?
+Cual fue el ultimo emperador del imperio romano?
 1
 Octavio Augusto
-Julio César
-Calígula
+Julio Cesar
+Caligula
 Marco Aurelio
-¿Cuál determina la resistencia eléctrica?
+Cual determina la resistencia electrica?
 2
 Amperio
 Ohm
 Watt
 Vatio
-¿Qué obra no pertenece a Miguel de Cervantes?
+Que obra no pertenece a Miguel de Cervantes?
 3
 El Quijote
 Novelas ejemplares
-La vida es sueño
+La vida es sueno
 Rinconete y Cortadillo
-¿Cuántos ángulos internos tiene un octágono?
+Cuantos angulos internos tiene un octagono?
 4
 Seis
 Siete
 Diez
 Ocho
-¿Quién escribió el Discurso del Método?
+Quien escribio el Discurso del Metodo?
 2
 Nietzsche
 Descartes
 Robespierre
-Platón
-¿Qué país llegó primero al espacio?
+Platon
+Que pais llego primero al espacio?
 1
 URSS
 EEUU
 Andorra
 Alemania
-¿Cuál NO es un problema que afecta crónicamente a la vista?
+Cual NO es un problema que afecta cronicamente a la vista?
 3
-Miopía
-Hipermetropía
+Miopia
+Hipermetropia
 Astigmatismo
-Lipotímia
-¿En qué año empezó la Guerra Civil Española?
+Lipotimia
+En que ano empezo la Guerra Civil Espanola?
 1
 1936
 1910
 1944
 1989
-¿Qué filósofo es más actual?
+Que filosofo es mas actual?
 4
-Platón
+Platon
 Kant
 Hegel
 Nietzsche
+
+
 
